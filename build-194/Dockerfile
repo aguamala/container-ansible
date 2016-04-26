@@ -32,4 +32,8 @@ RUN echo "===> Installing EPEL..."        && \
     mkdir -p /etc/ansible                          && \
     echo 'localhost' > /etc/ansible/hosts
 
-CMD [ "ansible", "--version" ]
+COPY ansible.cfg /etc/ansible/ansible.cfg
+COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["ansible-playbook"]
