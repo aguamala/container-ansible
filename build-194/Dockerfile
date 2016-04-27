@@ -17,6 +17,7 @@ RUN echo "===> Installing EPEL..."        && \
     \
     echo "===> Installing Ansible..." && \
     pip install ansible==${ANSIBLE_VERSION} && \
+    pip install boto six && \
     \
     \
     echo "===> Disabling sudo 'requiretty' setting..." && \
@@ -35,5 +36,8 @@ RUN echo "===> Installing EPEL..."        && \
 COPY ansible.cfg /etc/ansible/ansible.cfg
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+COPY ec2.ini /etc/ansible/ec2.ini
+COPY ec2.py  /etc/ansible/ec2.py
+RUN chmod +x /etc/ansible/ec2.py
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["ansible-playbook"]
