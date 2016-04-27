@@ -48,3 +48,7 @@ Quickstart:
         --volume=$(pwd):/etc/ansible/roles \
         --volume private_key:/root/.ssh/id_rsa \
         aguamala/ansible:1.9.4
+
+
+
+Inspired by williamyeh/ansible

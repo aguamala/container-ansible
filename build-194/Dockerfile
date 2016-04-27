@@ -1,4 +1,4 @@
-FROM aguamala/centos-systemd
+FROM aguamala/centos-systemd:7
 MAINTAINER "gabo" <aguamala@deobieta.com>
 ENV ANSIBLE_VERSION 1.9.4
 
