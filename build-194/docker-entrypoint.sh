@@ -64,12 +64,16 @@ if [ "$1" = 'ansible-playbook' ]; then
         PLAYBOOK=playbook.yml
     fi
 
+    if [ -z "$ARGS" ]; then
+        ARGS=""
+    fi
+
     #INVENTORY DEFINED BY USER
     if [ -f "$INVENTORY" ]; then
         if [ -z "$CONNECTION_LOCAL" ]; then
-            exec "$@" -i $INVENTORY $PLAYBOOK
+            exec "$@" -i $INVENTORY $PLAYBOOK $ARGS
         else
-            exec "$@" -i $INVENTORY $PLAYBOOK --connection=local
+            exec "$@" -i $INVENTORY $PLAYBOOK $ARGS --connection=local
         fi
     #USE DEFAULT INVENTORY
     else
@@ -78,9 +82,9 @@ if [ "$1" = 'ansible-playbook' ]; then
             echo $INVENTORY_HOST >> /etc/ansible/hosts
         fi
         if [ -z "$CONNECTION_LOCAL" ]; then
-            exec "$@" -i $PLAYBOOK
+            exec "$@" -i $PLAYBOOK $ARGS
         else
-            exec "$@" -i $PLAYBOOK --connection=local
+            exec "$@" -i $PLAYBOOK $ARGS --connection=local
         fi
     fi
 else
