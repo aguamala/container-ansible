@@ -11,13 +11,14 @@ RUN echo "===> Installing EPEL..."        && \
     \
     \
     echo "===> Adding Ansible's prerequisites..."  && \
-    yum -y install gcc python-devel python-pip     && \
+    yum -y install python-pip sudo && \
     pip install --upgrade pip                      && \
     \
     \
     echo "===> Installing Ansible..." && \
+    yum -y install libtomcrypt libyaml libtommath python-backports python-httplib2 python-backports-ssl_match_hostname python-keyczar python-jinja2 python-babel python-markupsafe python-paramiko python-pyasn1 python-six python-setuptools python2-crypto python2-ecdsa sshpasslibtomcrypt libyaml libtommath python-backports python-httplib2 python-backports-ssl_match_hostname python-keyczar python-jinja2 python-babel python-markupsafe python-paramiko python-pyasn1 python-six python-setuptools python2-crypto python2-ecdsa sshpass python-boto && \
     pip install ansible==${ANSIBLE_VERSION} && \
-    pip install boto six && \
+
     \
     \
     echo "===> Disabling sudo 'requiretty' setting..." && \
@@ -25,7 +26,7 @@ RUN echo "===> Installing EPEL..."        && \
     \
     \
     echo "===> Removing unused YUM resources..."             && \
-    yum -y remove epel-release gcc python-devel python-pip   && \
+    yum -y remove epel-release python-pip && \
     yum clean all                                            && \
     \
     \
