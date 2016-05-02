@@ -11,7 +11,7 @@ RUN echo "===> Installing EPEL..."        && \
     \
     \
     echo "===> Adding Ansible's prerequisites..."  && \
-    yum -y install gcc python-devel python-pip     && \
+    yum -y install gcc python-devel python-pip openssl-devel libffi-devel && \
     pip install --upgrade pip                      && \
     \
     \
@@ -25,7 +25,8 @@ RUN echo "===> Installing EPEL..."        && \
     \
     \
     echo "===> Removing unused YUM resources..."             && \
-    yum -y remove epel-release gcc python-devel python-pip   && \
+    yum -y remove epel-release gcc python-devel python-pip openssl-devel && \
+    yum -y --setopt=tsflags=noscripts remove libffi-devel && \
     yum clean all                                            && \
     \
     \
