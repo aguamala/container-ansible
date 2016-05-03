@@ -89,6 +89,13 @@ if [ "$1" = 'ansible-playbook' ]; then
             exec "$@" -i $PLAYBOOK $ARGS --connection=local
         fi
     fi
+elif [ "$1" = 'ansible-galaxy' ]; then
+    #INSTALL PLAYBOOK REQUIREMENTS
+    if [ ! -f "$REQUIREMENTS" ]; then
+        echo >&2 'error: missing requirements file'
+        exit 1
+    fi
+    ansible-galaxy install -f -r $REQUIREMENTS
 else
     exec "$@"
 fi
