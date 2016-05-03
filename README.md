@@ -9,8 +9,8 @@ The following environment variables are honored for configuring ansible:
 -	`-e ANSIBLE_CFG_HOST_KEY_CHECKING=...` (Set to enable host key checking. Default False)
 -	`-e ANSIBLE_CFG_PRIVATE_KEY=...` (Path to private key. Default /root/.ssh/id_rsa)
 -	`-e ANSIBLE_EC2=...` (Enable EC2 Dynamic inventory and options)
--	`-e AWS_ACCESS_KEY_ID=...` (AWS access key. Mandatory when ANSIBLE_EC2 enabled and /root/.aws/credentials does not exist )
--	`-e AWS_SECRET_ACCESS_KEY=...` (AWS secret key. Mandatory when ANSIBLE_EC2 enabled  and /root/.aws/credentials does not exist)
+-	`-e AWS_ACCESS_KEY_ID=...` (AWS access key. Mandatory when ANSIBLE_EC2 enabled and /root/.aws/credentials  doesn't exist )
+-	`-e AWS_SECRET_ACCESS_KEY=...` (AWS secret key. Mandatory when ANSIBLE_EC2 enabled  and /root/.aws/credentials doesn't exist)
 -	`-e ANSIBLE_EC2_INI_REGIONS=...` (Set regions to query. Default all)
 -	`-e ANSIBLE_EC2_INI_ALL_INSTANCES=...` (Query all instances despite their status)
 -	`-e ANSIBLE_EC2_INI_CACHE_MAX_AGE=...` (Set cache max age. Default 300) Doesn't make any sense if you create the container every run
