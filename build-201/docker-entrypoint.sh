@@ -19,9 +19,11 @@ if [ "$1" = 'ansible-playbook' ]; then
     #ANSIBLE_EC2 OPTIONS
     if [ -n "$ANSIBLE_EC2" ]; then
 
-        if [[ -z "$AWS_ACCESS_KEY_ID" ]] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
-            echo >&2 'error: missing AWS_ACCESS_KEY_ID or AWS_SECRET_ACCESS_KEY environment variables'
-            exit 1
+        if [ ! -f /root/.aws/credentials ]; then
+            if [[ -z "$AWS_ACCESS_KEY_ID" ]] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+                echo >&2 'error: missing AWS_ACCESS_KEY_ID or AWS_SECRET_ACCESS_KEY environment variables'
+                exit 1
+            fi
         fi
 
         #FORCE DYNAMIC INVENTORY
