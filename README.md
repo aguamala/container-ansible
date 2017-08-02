@@ -1,4 +1,4 @@
-# docker-ansible
+# container-ansible
 
 Run ansible playbooks with different versions. Useful to test ansbile 2
 
